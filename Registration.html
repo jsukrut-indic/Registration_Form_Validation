@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<head>
+<title>Registration</title>
+	<!-- Bootstrap Links -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+  			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  			crossorigin="anonymous">
+  	</script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	 <script type= "text/javascript" src = "countries3.js"></script>
+
+<script type="text/javascript">
+
+function check_pincode()
+{
+	var pat1=/^[1-9][0-9]{5}$/;
+	var pin_code=document.getElementById("pin");
+
+	if(!pat1.test(pin_code.value))	
+	{
+		alert("Pin Code Must Be Valid "); 
+		return false;
+		 
+	}
+
+}
+
+function check_email()
+{
+	var user_id=document.getElementById("email");
+	var filter=/^([a-z A-Z 0-9 _\.\-])+\@(([a-z A-Z 0-9\-])+\.)+([a-z A-z 0-9]{2,3})+$/;
+	
+	if(!filter.test(user_id.value))
+	{
+			alert("Invalid Email Address");	
+			return false;
+	}
+	else
+	{
+			return true;
+	}
+	
+}
+
+
+function check_mobile()
+{
+	var user_mobile=document.getElementById("mobile");
+	var pattern=/^[1-9][0-9]{9}$/;
+
+	if(!pattern.test(user_mobile.value))
+	{
+			alert("Phone Nubmer Must Be Valid");
+			return false;
+	}
+	else
+	{
+			return true;		
+	}
+		
+}
+
+function ConfirmPass() 
+{
+        var p1 = document.getElementById("pass1").value;
+        var p2 = document.getElementById("pass2").value;
+        if (p1 != p2) {
+        	alert(" Please Check Passwords!!!");
+            document.getElementById("pass1").style.borderColor = "#E34234";
+            document.getElementById("pass2").style.borderColor = "#E34234";
+            return false; 
+        }
+        else 
+        {
+            
+         	document.getElementById("pass1").style.borderColor = "#1e90ff";
+            document.getElementById("pass2").style.borderColor = "#1e90ff";
+            return true;  
+            
+        }
+    }
+
+function check_First()
+{
+	var f=document.getElementById("first_name").value;
+	if(f==null || f=="")
+	{
+		alert("Please Enter Your First Name");
+		return false;
+	}
+	else
+	{  	var fn=/^[A-Za-z]+$/;
+		if(!fn.test(f))
+		{
+			alert("Please Enter Characters Only");
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+}
+
+function check_Last()
+{
+
+	var l=document.getElementById("last_name").value;
+	if(l==null || l=="")
+	{
+		alert("Please Enter Your Last Name");
+		return false;
+	}
+	else
+	{
+		var ln=/^[A-Za-z]+$/;
+		if(!ln.test(l))
+		{
+			alert("Please Enter Characters Only");
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+}
+function check_Dob()
+{
+
+	var d=document.getElementById("dob");
+	
+	if(d.value==null || d.value=="")
+	{	
+		alert("Please Enter Your Date Of Birth");
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+function check_gender()
+{
+
+	var g=document.getElementById("gender");
+	if(g.value==null || g.value=="")
+	{
+		alert("Please Select Gender");
+		return false;
+	}
+	else
+	{
+		document.getElementById("address").focus();
+		return true;
+	}
+}
+function check_country()
+{
+
+	var c=document.getElementById("country");
+	if(c.value==null || c.value=="")
+	{
+		alert("Please Select Country");
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+function check_state()
+{
+	var st=document.getElementById("state");
+	if(st.value==null || st.value=="")
+	{
+		alert("Please Select State");
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+function check_city()
+{
+	var c=/^[A-Za-z]+$/;
+	var cty=document.getElementById("city");
+	if(cty.value==null || cty.value=="")
+	{
+		alert("Please Enter Your City");
+		return false;
+	}
+	else
+	{
+		if(!c.test(cty))
+		{
+			alert("Please Enter Characters Only");
+			return false;
+		}
+		else
+		{
+		return true;
+		}	
+	}
+}
+function check_address()
+{	
+	var add1=document.getElementById("address");
+	if(document.getElementById("address").value==null || document.getElementById("address").value=="")
+	{
+		alert("Please Enter Your Address");
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+
+function returnToPreviousPage() {
+    window.history.back();
+}
+
+
+ function reg()
+ {
+ 	var f1=check_First();
+ 	//console.log(check_First());
+ 	var f2=check_Last();
+ 	//console.log(check_Last());
+ 	var f3=check_Dob();
+ 	//console.log(check_Dob());
+ 	var f4=check_gender();
+ 	//console.log(check_gender());
+ 	var f5=check_address();
+ 	//console.log(check_address());
+ 	var f6=check_country();
+ 	//console.log(check_country());
+ 	var f7=check_city();
+ 	//console.log(check_city());
+ 	var f8=check_email();
+ 	//console.log(check_email());
+ 	var f9=check_mobile();
+ 	//console.log(check_mobile());
+ 	var f10=ConfirmPass();
+ 	//console.log(ConfirmPass());
+ 	if(f1&&f2&&f3&&f4&&f5&&f6&&f7&&f8&&f9&&f10)
+ 	{
+ 		alert("Your Form IS SUBMITED");
+ 		return true;
+ 	}
+ 	else
+ 	{
+     return false;
+     alert("Please Fill Valid Details");
+  
+ 	}
+ 	
+ }
+
+</script>
+
+<style>
+td{padding: 15px;}
+textarea.add {
+    resize: none;
+}
+td.glphy{
+	width=20Px;
+}
+
+div.st{
+	background-image:url("download.jpg");
+	padding:10px;
+}
+
+.floating-box {
+    float: left;
+    width: 40px;
+    height:20px;
+    margin: 10px;
+}
+
+</style>
+
+
+</head>
+<body>
+<div class="row" style="margin: 5px 5px 5px 50px;">
+    <div class="col-md-12">
+    <table>
+    	<tr>
+    		<td><img src="loginLogo.png" height="150" width="180"/></td>
+    		<td colspan=4><br><br><br><br>&nbsp; <h4><b><font size="5">MAHARASHTRA TOURISM</font></b></h4>
+    			           Maharashtra Tourism Development Corporation
+
+    		</td>
+    	</tr>
+    </table>	 
+    </div>
+</div>
+<div style="background-color:#757271;padding:10px;"></div>
+<div class="st">
+	<h3>Registration</h3>
+	<div style="border: 1px solid black;padding=10px;background-color:#DE510E;">
+		<div style="background-color:#B0ACAC; margin: 20px 20px 20px 20px; padding=10px;border: 1px solid #344153;">
+			<form name="registration" method=post>			
+			<table>
+				<tr>
+				<td colspan=3><div class="floating-box"><img src="plainicon.png"class="img-circle" height=40 width=40/></div><h3>Personal Information</h3></td>
+				</tr>
+				<tr>
+					<td>Salutation</td>
+					<td> : </td>
+					<td><select  class="form-control" name="salutation">
+  							<option value="mr">Mr</option>
+  							<option value="mrs">Mrs</option>
+  							<option value="dr">Dr</option>
+  							<option value="ms">Ms</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>First Name <font color=red>*</font></td>
+					<td> : </td>
+					<td><input class="form-control" type="text" name="first_name"  id="first_name" style="text-transform:capitalize;" onfocusout="check_First()" ></td>
+					<td colspan=2> </td>
+					<td>Last Name <font color=red>*</font></td>
+					<td> : </td>
+					<td><input class="form-control" type="text" name="last_name"  id="last_name" style="text-transform:capitalize;" onfocusout="check_Last()"  ></td>
+				</tr>
+				<tr>
+					<td>Date of Birth<font color=red>*</font></td>
+					<td> : </td>
+					<td><input  name="dob" type="date" id="dob" onfocusout="check_Dob()"  ></td>
+					<td colspan=2> </td>
+					<td>Gender <font color=red>*</font></td>
+					<td> : </td>
+					<td><select class="form-control" id="gender" name="gender" onfocusout="check_gender()"  >
+							<option value=""></option>
+  							<option value="male">MALE</option>
+  							<option value="female">Female</option>
+						</select></td>
+				</tr>
+				<tr>
+					<td>Address<font color=red>*</font></td>
+					<td> : </td>
+					<td><textarea class="add" id="address" name="address" rows="3" cols="35" onblur="check_address()" ></textarea></td>
+					<td colspan=2> </td>
+
+				</tr>
+				<tr>
+					<td>Country<font color=red>*</font></td>
+					<td> : </td>
+					<td> <select onchange="print_state('state',this.selectedIndex);" id="country"  name ="country" onfocusout="check_country()" >
+						</select></td>
+					<td colspan=2> </td>
+					<td>State <font color=red>*</font></td>
+					<td> : </td>
+					<td> <select name ="state" id ="state" ></select></td>
+				</tr>
+				<script language="javascript">print_country("country");</script>
+				<tr>
+					<td>City<font color=red>*</font></td>
+					<td> : </td>
+					<td><input class="form-control" type="text"  id="city" name="city" style="text-transform:capitalize;" onfocusout="check_city()" ></td>
+					<td colspan=2> </td>
+					<td>Pincode </td>
+					<td> : </td>
+					<td><input class="form-control" type="text"  id="pin" name="pin" onfocusout="check_pincode()" ></td>
+				</tr>
+				<tr>
+					<td>Email<font color=red>*</font></td>
+					<td> : </td>
+					<td><input  class="form-control" type="email" id="email" name="email" onfocusout="check_email()" ></td>
+					<td colspan=2> </td>
+					<td>Mobile No<font color=red>*</font> </td>
+					<td> : </td>
+					<td><input class="form-control" type="text" id="mobile" name="mobile" onfocusout="check_mobile()" ></td>
+				</tr>
+				<tr>
+					<td>Fax No</td>
+					<td> : </td>
+					<td><input class="form-control" type="text" id="faxno" name="faxno"></td>
+					<td colspan=2> </td>
+					<td>Language Preffered</td>
+					<td> : </td>
+					<td><input class="form-control" type="text" id="lang" name="language"></td>
+				</tr>
+				<tr><td colspan=4><div class="floating-box"><img src="images.png" class="img-circle" height=40 width=40/></div> <h3>Registration</h3></td></tr>
+				<tr></span>
+					<td>User Name <font color=red>*</font></td>
+					<td> : </td>
+					<td><input class="form-control" type="text" id="user" name="user_name" ></td>
+				</tr>	
+				<tr>
+					<td>Password <font color=red>*</font></td>
+					<td> : </td>
+					<td><input class="form-control" type="password" id="pass1" name="password" ></td>
+				</tr>	
+					<td>Confirm Password <font color=red>*</font></td>
+					<td> : </td>
+					<td><input class="form-control" type="password" id="pass2" name="cpassword" onfocusout="ConfirmPass()"></td>
+
+				</tr>
+				<tr>
+					<td><input  type="submit" id="submit" class="btn btn-info"  onclick="return reg()">&nbsp;
+						<input  type="reset"  id="reset"  class="btn btn-info" value="cancle" class="btn btn-info"></td>
+					
+				</tr>
+
+			</table>
+			</form>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
